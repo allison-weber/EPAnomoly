@@ -9,13 +9,13 @@ import time
 
 
 def load_daily_sensor(site_id:int, var:str) -> pl.DataFrame:
-    df = pl.read_parquet(f"../data/daily/sensors/{site_id}/{var}.parquet")
+    df = pl.read_parquet(f"../src/data/daily/sensors/{site_id}/{var}.parquet")
     return df
 
 
 def load_county_aqi_data_pl() -> pl.DataFrame:
     df = pl.read_csv(
-        "../data/Combined_AQI_By_County.csv",
+        "../src/data/Combined_AQI_By_County.csv",
         try_parse_dates=True,null_values={'State Code': 'CC'})
     # return to pandas so rest of code functions without modification for now
     df = df.to_pandas()
@@ -87,7 +87,7 @@ def calcDBSCAN(df: pd.DataFrame, site_id: str) -> pd.DataFrame:
 
 
 def main(site_list: list = None):
-    # sites = pl.read_parquet(f"../data/aqs_sites.parquet")
+    # sites = pl.read_parquet(f"../src/data/aqs_sites.parquet")
     # print(sites)
 
     # Polars is much faster than pandas to load csv

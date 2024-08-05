@@ -49,7 +49,7 @@ def create_simple_test_data():
 
 def load_county_aqi_data(site_list) -> pl.DataFrame:
     df = pl.read_csv(
-        "../data/Combined_AQI_By_County.csv",
+        "../src/data/Combined_AQI_By_County.csv",
         try_parse_dates=True,
         null_values={'State Code': 'CC'})
     df = df.filter(pl.col("Defining Site").is_in(site_list))

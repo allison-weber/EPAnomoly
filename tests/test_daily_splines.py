@@ -19,7 +19,7 @@ NUM_TRIALS_PER_VARIABLE = 10
 
 def _get_data_for_variable(variable: str):
     """Returns combined.parquet for the given variable."""
-    return pl.read_parquet(f"../data/daily/{variable}/combined.parquet").sort("Date Local")
+    return pl.read_parquet(f"../src/data/daily/{variable}/combined.parquet").sort("Date Local")
 
 def main():
     for variable in BENCHMARK_VARIABLES:
